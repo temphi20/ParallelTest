@@ -18,7 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CProcessor.cpp">
+    <ClCompile Include="CPUMng.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -26,7 +26,7 @@
     <ClInclude Include="..\ParallelTest\Timer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CProcessor.h">
+    <ClInclude Include="CPUMng.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,16 +1,37 @@
 ﻿//#include "../ParallelTest/framework.h"
 //#include "CPUUsage.h"
-#include "CProcessor.h"
+#include "CPUMng.h"
 #include "../ParallelTest/framework.h"
 //#include <WinBase.h>
 
 
 int main()
 {
-    WGSTest::CProcessor manager;
+    WGSTest::CPUMng manager;
 
     manager.SetProcessor(0);
-    std::cout << "before: " << manager.GetCurrentProcessor() << std::endl;
+    cout << "after: " << manager.GetCurrentProcessor() << endl;
+    cout << "after: " << manager.GetCurrentProcessor() << endl;
+    cout << "after: " << manager.GetCurrentProcessor() << endl;
+    cout << "after: " << manager.GetCurrentProcessor() << endl;
+    cout << "after: " << manager.GetCurrentProcessor() << endl;
+    cout << "after: " << manager.GetCurrentProcessor() << endl;
+    cout << "after: " << manager.GetCurrentProcessor() << endl;
+    cout << "after: " << manager.GetCurrentProcessor() << endl;
+    cout << "after: " << manager.GetCurrentProcessor() << endl;
+
+    manager.SetProcessor(9);
+    cout << "after: " << manager.GetCurrentProcessor() << endl;
+    //cout << "after: " << manager.GetCurrentProcessor() << endl;
+    //cout << "after: " << manager.GetCurrentProcessor() << endl;
+    //cout << "after: " << manager.GetCurrentProcessor() << endl;
+    //cout << "after: " << manager.GetCurrentProcessor() << endl;
+    //cout << "after: " << manager.GetCurrentProcessor() << endl;
+    //cout << "after: " << manager.GetCurrentProcessor() << endl;
+    //cout << "after: " << manager.GetCurrentProcessor() << endl;
+    //cout << "after: " << manager.GetCurrentProcessor() << endl;
+
+    system("pause");
     
     return 0;
 }

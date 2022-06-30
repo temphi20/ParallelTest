@@ -141,11 +141,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="CProcessor.cpp" />
+    <ClCompile Include="CPUMng.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ParallelTest\Timer.h" />
-    <ClInclude Include="CProcessor.h" />
+    <ClInclude Include="CPUMng.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
