@@ -1,5 +1,6 @@
 #ifndef _DIGITAL_FILTERS_H_
 #define _DIGITAL_FILTERS_H_
+#define _USE_MATH_DEFINES
 
 #include <stdexcept>
 #include <cmath>
