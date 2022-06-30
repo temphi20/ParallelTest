@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{777f7a75-f7ed-4cbe-a6bd-7876acf8dc81}</ProjectGuid>
-    <RootNamespace>ParallelTest</RootNamespace>
+    <ProjectGuid>{931cbb4c-c3d3-4a08-9528-4a29d7ba0268}</ProjectGuid>
+    <RootNamespace>CPUUsage</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -141,11 +141,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="CProcessor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="Timer.h" />
+    <ClInclude Include="..\ParallelTest\Timer.h" />
+    <ClInclude Include="CProcessor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
