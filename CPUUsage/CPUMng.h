@@ -28,14 +28,29 @@ namespace WGSTest
 
 		BOOL SetProcessor(DWORD cpu);
 		//void SetThread(UINT cpu);
-		void GetUsage();
+		VOID GetUsage();
+		VOID Reset();
+		VOID GetCPUUsage();
 		
 		inline DWORD GetCurrentProcessor() { return GetCurrentProcessorNumber(); }
+		inline VOID Print()
+		{
+			for (size_t i = 0; i < m_usages.size(); i++)
+			{
+				cout << "CORE " << i << " : " << m_usages[i] << "%" << endl;
+			}
+		}
 	private:
 		SYSTEM_INFO m_sInfo;
 		DWORD m_nCore;
-		vector<HCOUNTER> m_hCounters;
-		inline BOOL isError(PDH_STATUS status) { return status != ERROR_SUCCESS; }
+		//vector<HCOUNTER> m_hCounters;
+		vector<DOUBLE> m_usages;
+		inline BOOL isError(PDH_STATUS status)
+		{
+			BOOL ret = status != ERROR_SUCCESS;
+			if(ret) wprintf(L"Error 0x%x\n", status);
+			return ret;
+		}
 	};
 }
 

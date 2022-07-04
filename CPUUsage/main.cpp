@@ -9,7 +9,9 @@ int main()
 {
     WGSTest::CPUMng manager;
 
-    manager.SetProcessor(0);
+    manager.GetUsage();
+    manager.Print();
+    /*manager.SetProcessor(0);
     cout << "after: " << manager.GetCurrentProcessor() << endl;
     cout << "after: " << manager.GetCurrentProcessor() << endl;
     cout << "after: " << manager.GetCurrentProcessor() << endl;
@@ -21,7 +23,7 @@ int main()
     cout << "after: " << manager.GetCurrentProcessor() << endl;
 
     manager.SetProcessor(9);
-    cout << "after: " << manager.GetCurrentProcessor() << endl;
+    cout << "after: " << manager.GetCurrentProcessor() << endl;*/
     //cout << "after: " << manager.GetCurrentProcessor() << endl;
     //cout << "after: " << manager.GetCurrentProcessor() << endl;
     //cout << "after: " << manager.GetCurrentProcessor() << endl;
