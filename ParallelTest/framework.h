@@ -13,5 +13,6 @@ typedef unsigned long ULONG;
 typedef unsigned long long int ULLONG;
 
 const UINT THREAD_NUM = 10;
+const UINT TEST_NUM = 10000000;
 const ULONG TEST_LNUM = 4294967295;
 const ULLONG TEST_LLNUM = 18446744073709551615;
