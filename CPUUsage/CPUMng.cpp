@@ -4,8 +4,10 @@ namespace WGSTest
 {
 	BOOL CPUMng::SetProcessor(DWORD iCore)
 	{
-		if (iCore >= m_nCore) return false;
-		return SetProcessAffinityMask(GetCurrentProcess(), iCore + 1u);
+		static DWORD cpu_mask[8] = { 1, 2, 4, 8, 16, 32, 64, 128 };
+		//if (iCore >= m_nCore) return false;
+		/*return SetProcessAffinityMask(GetCurrentProcess(), iCore + 1u);*/
+		return SetProcessAffinityMask(GetCurrentProcess(), cpu_mask[iCore]);
 	}
 
 	/*void CPUMng::SetThread(UINT cpu)
