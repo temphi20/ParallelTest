@@ -3,13 +3,12 @@
 #include <amp.h>
 using namespace concurrency;
 
-//template<class T> unique
-
 int main()
 {
 	WGSTest::Timer timer;
-	UINT mask[6] = { 0, 1, 2, 3, 4, 5 };
-	//UINT arr[TEST_NUM] = { 0 };
+	UINT mask[6] = { 0, 1, 2, 3, 4, 5, };
+	//UINT* arr = new UINT(TEST_LNUM);
+	//unique_ptr<UINT> arr(new UINT(TEST_LNUM));
 	vector<UINT> arr(TEST_LNUM);
 
 	timer.Start();
@@ -27,7 +26,7 @@ int main()
 		{
 
 			
-			v_arr[idx] = v_mask[idx % 6] * 2;
+			v_arr[idx] = v_arr[idx] + v_mask[idx % 6] * 2;
 			/*if (v_arr[idx])
 			{
 				v_arr[idx] = pow(v_arr[idx], 1.2);
@@ -50,10 +49,13 @@ int main()
 	timer.Start();
 	for (ULONG idx = 0; idx < TEST_LNUM; idx++)
 	{
+		//arr.get()[idx] = mask[idx % 6] * 2;
 		arr[idx] = mask[idx % 6] * 2;
 	}
 	timer.End();
 	timer.Print("for");
+
+	delete[] arr;
 
 	/*cout << arr.get()[0] << endl;
 	cout << arr.get()[1] << endl;
