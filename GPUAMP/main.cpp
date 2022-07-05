@@ -8,13 +8,13 @@ using namespace concurrency;
 int main()
 {
 	WGSTest::Timer timer;
-	UINT mask[6] = { 10, 1, 2, 3, 4, 5 };
+	UINT mask[6] = { 0, 1, 2, 3, 4, 5 };
 	//UINT arr[TEST_NUM] = { 0 };
-	vector<UINT> arr(TEST_NUM);
+	vector<UINT> arr(TEST_LNUM);
 
 	timer.Start();
 	array_view<const UINT, 1> v_mask(6, mask);
-	array_view<UINT, 1> v_arr(TEST_NUM, arr);
+	array_view<UINT, 1> v_arr(TEST_LNUM, arr);
 	v_arr.discard_data();
 	timer.End();
 	timer.Print("array_view µî·Ï");
@@ -22,11 +22,16 @@ int main()
 	timer.Start();
 	parallel_for_each(
 		v_arr.extent,
-		[=](index<1> idx) restrict(amp)
+		[=](index<1> idx) 
+		restrict(amp)
 		{
 
 			
 			v_arr[idx] = v_mask[idx % 6] * 2;
+			/*if (v_arr[idx])
+			{
+				v_arr[idx] = pow(v_arr[idx], 1.2);
+			}*/
 
 			//sum_arr[idx] = arr[idx] + idx;
 		}
@@ -34,16 +39,16 @@ int main()
 	timer.End();
 	timer.Print("parallel_for_each");
 
-	cout << v_arr[0] << endl;
-	cout << v_arr[1] << endl;
-	cout << v_arr[2] << endl;
-	cout << v_arr[3] << endl;
-	cout << v_arr[4] << endl;
-	cout << v_arr[5] << endl;
-	cout << v_arr[6] << endl;
+	//cout << v_arr[0] << endl;
+	//cout << v_arr[1] << endl;
+	//cout << v_arr[2] << endl;
+	//cout << v_arr[3] << endl;
+	//cout << v_arr[4] << endl;
+	//cout << v_arr[5] << endl;
+	//cout << v_arr[6] << endl;
 
 	timer.Start();
-	for (UINT idx = 0; idx < TEST_NUM; idx++)
+	for (ULONG idx = 0; idx < TEST_LNUM; idx++)
 	{
 		arr[idx] = mask[idx % 6] * 2;
 	}
@@ -58,13 +63,13 @@ int main()
 	cout << arr.get()[5] << endl;
 	cout << arr.get()[6] << endl;*/
 
-	cout << arr[0] << endl;
-	cout << arr[1] << endl;
-	cout << arr[2] << endl;
-	cout << arr[3] << endl;
-	cout << arr[4] << endl;
-	cout << arr[5] << endl;
-	cout << arr[6] << endl;
+	//cout << arr[0] << endl;
+	//cout << arr[1] << endl;
+	//cout << arr[2] << endl;
+	//cout << arr[3] << endl;
+	//cout << arr[4] << endl;
+	//cout << arr[5] << endl;
+	//cout << arr[6] << endl;
 
 
 	system("pause");
