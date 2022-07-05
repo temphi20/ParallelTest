@@ -1,6 +1,6 @@
 #include "Timer.h"
 
-namespace Test
+namespace WGSTest
 {
 	void Timer::Start()
 	{

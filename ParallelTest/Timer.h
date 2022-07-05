@@ -3,7 +3,7 @@
 #include <chrono>
 #include <string>
 
-namespace Test
+namespace WGSTest
 {
 	using namespace std;
 	using namespace chrono;
