@@ -21,12 +21,11 @@ int main()
 	timer.Start();
 	parallel_for_each(
 		v_arr.extent,
-		[=](index<1> idx) 
-		restrict(amp)
+		[=](index<1> idx) restrict(amp)
 		{
 
 			
-			v_arr[idx] = v_arr[idx] + v_mask[idx % 6] * 2;
+			v_arr[idx] = v_mask[idx % 6];
 			/*if (v_arr[idx])
 			{
 				v_arr[idx] = pow(v_arr[idx], 1.2);
@@ -55,7 +54,7 @@ int main()
 	timer.End();
 	timer.Print("for");
 
-	delete[] arr;
+	//delete[] arr;
 
 	/*cout << arr.get()[0] << endl;
 	cout << arr.get()[1] << endl;
