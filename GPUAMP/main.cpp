@@ -7,7 +7,7 @@ int main()
 {
 	WGSTest::Timer timer;
 	UINT mask[6] = { 0, 1, 2, 3, 4, 5, };
-	//UINT* arr = new UINT(TEST_LNUM);
+	//UINT* arr_ptr = new UINT(TEST_LNUM);
 	//unique_ptr<UINT> arr(new UINT(TEST_LNUM));
 	vector<UINT> arr(TEST_LNUM);
 
@@ -17,15 +17,14 @@ int main()
 	v_arr.discard_data();
 	timer.End();
 	timer.Print("array_view µî·Ï");
-	
+	//int a = 3;
 	timer.Start();
 	parallel_for_each(
 		v_arr.extent,
 		[=](index<1> idx) restrict(amp)
 		{
-
 			
-			v_arr[idx] = v_mask[idx % 6];
+			v_arr[idx] = v_mask[idx % 6] * 2;
 			/*if (v_arr[idx])
 			{
 				v_arr[idx] = pow(v_arr[idx], 1.2);
