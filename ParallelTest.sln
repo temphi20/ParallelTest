@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GPUAMP", "GPUAMP\GPUAMP.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntelOneApi", "IntelIPP\IntelIPP.vcxproj", "{6626A2B9-754B-43A8-BD2D-09248CC28989}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cuda", "Cuda\Cuda.vcxproj", "{F1FD8ACC-B831-44D1-A6FF-9D3F2C15E46D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,12 @@ Global
 		{6626A2B9-754B-43A8-BD2D-09248CC28989}.Release|x64.Build.0 = Release|x64
 		{6626A2B9-754B-43A8-BD2D-09248CC28989}.Release|x86.ActiveCfg = Release|Win32
 		{6626A2B9-754B-43A8-BD2D-09248CC28989}.Release|x86.Build.0 = Release|Win32
+		{F1FD8ACC-B831-44D1-A6FF-9D3F2C15E46D}.Debug|x64.ActiveCfg = Debug|x64
+		{F1FD8ACC-B831-44D1-A6FF-9D3F2C15E46D}.Debug|x64.Build.0 = Debug|x64
+		{F1FD8ACC-B831-44D1-A6FF-9D3F2C15E46D}.Debug|x86.ActiveCfg = Debug|x64
+		{F1FD8ACC-B831-44D1-A6FF-9D3F2C15E46D}.Release|x64.ActiveCfg = Release|x64
+		{F1FD8ACC-B831-44D1-A6FF-9D3F2C15E46D}.Release|x64.Build.0 = Release|x64
+		{F1FD8ACC-B831-44D1-A6FF-9D3F2C15E46D}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

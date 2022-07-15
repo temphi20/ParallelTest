@@ -7,9 +7,9 @@ int main()
 {
 	WGSTest::Timer timer;
 	UINT mask[6] = { 0, 1, 2, 3, 4, 5, };
-	//UINT* arr_ptr = new UINT(TEST_LNUM);
-	//unique_ptr<UINT> arr(new UINT(TEST_LNUM));
-	vector<UINT> arr(TEST_LNUM);
+	UINT* arr = new UINT[TEST_LNUM];
+	//unique_ptr<UINT> arr(new UINT[TEST_LNUM]);
+	//vector<UINT> arr(TEST_LNUM);
 
 	timer.Start();
 	array_view<const UINT, 1> v_mask(6, mask);
@@ -36,22 +36,22 @@ int main()
 	timer.End();
 	timer.Print("parallel_for_each");
 
-	//cout << v_arr[0] << endl;
-	//cout << v_arr[1] << endl;
-	//cout << v_arr[2] << endl;
-	//cout << v_arr[3] << endl;
-	//cout << v_arr[4] << endl;
-	//cout << v_arr[5] << endl;
-	//cout << v_arr[6] << endl;
+	cout << v_arr[0] << endl;
+	cout << v_arr[1] << endl;
+	cout << v_arr[2] << endl;
+	cout << v_arr[3] << endl;
+	cout << v_arr[4] << endl;
+	cout << v_arr[5] << endl;
+	cout << v_arr[6] << endl;
 
-	timer.Start();
-	for (ULONG idx = 0; idx < TEST_LNUM; idx++)
-	{
+	//timer.Start();
+	//for (ULONG idx = 0; idx < TEST_LNUM; idx++)
+	//{
 		//arr.get()[idx] = mask[idx % 6] * 2;
-		arr[idx] = mask[idx % 6] * 2;
-	}
-	timer.End();
-	timer.Print("for");
+		//arr[idx] = mask[idx % 6] * 2;
+	//}
+	//timer.End();
+	//timer.Print("for");
 
 	//delete[] arr;
 
@@ -71,6 +71,7 @@ int main()
 	//cout << arr[5] << endl;
 	//cout << arr[6] << endl;
 
+	delete[] arr;
 
 	system("pause");
 	return 0;
