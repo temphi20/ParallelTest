@@ -7,7 +7,7 @@ UINT8 *result1 = new UINT8[DATA1_SIZE], *result2 = new UINT8[DATA1_SIZE];
 BOOL isCudaError(cudaError_t status, std::string str);
 cudaError_t cudaFilter(UINT8 *data);
 
-// 1thread 당 200개의 연산(for문)
+/*// 1thread 당 200개의 연산(for문)
 __global__ void addKernel(
 	const UINT8* data, UINT8* data1, UINT8* data2,
 	UINT8* res1, UINT8* res2,
@@ -28,6 +28,37 @@ __global__ void addKernel(
 	{
 		const UINT realIdx = taskIdx * SET_SIZE + i;
 		//printf("[%d] %d - %d", i, realIdx, taskIdx);
+		data1[realIdx] = data[realIdx * 2];
+		data2[realIdx] = data[realIdx * 2 + 1];
+
+		output_1 = amplFac_1 * (data1[realIdx] - x1_1 - output_1 * y1c_1);
+		x1_1 = data1[realIdx];
+		output_2 = amplFac_2 * (data2[realIdx] - x1_2 - output_2 * y1c_2);
+		x1_2 = data2[realIdx];
+
+		res1[realIdx] = output_1;
+		res2[realIdx] = output_2;
+	}
+}*/
+
+// 1thread 당 200개의 연산(for문)
+__global__ void addKernel(
+	const UINT8* data, UINT8* data1, UINT8* data2,
+	UINT8* res1, UINT8* res2)
+{
+	const ULONG taskIdx = threadIdx.x;
+
+	const double idt = 0.125, omega_c_1 = 2 * M_PI * 0.25, omega_c_2 = 2 * M_PI * 10;
+	const double amplFac_1 = 1 / ((idt * omega_c_1 / 2) + 1),
+		amplFac_2 = 1 / ((idt * omega_c_2 / 2) + 1),
+		y1c_1 = (idt * omega_c_1 / 2) - 1,
+		y1c_2 = (idt * omega_c_2 / 2) - 1,
+		dt = idt;
+	UINT8 output_1 = 0, output_2 = 0, x1_1 = 0, x1_2 = 0;
+
+	for (UINT i = 0; i < SET_SIZE; i++)
+	{
+		const UINT realIdx = taskIdx * SET_SIZE + i;
 		data1[realIdx] = data[realIdx * 2];
 		data2[realIdx] = data[realIdx * 2 + 1];
 
@@ -142,8 +173,10 @@ cudaError_t cudaFilter(UINT8 *data)
 
 	// calculate block
 	timer.Start();
+	addKernel << <1, THREAD_COUNT >> > (dev_data, dev_data1, dev_data2, dev_res1, dev_res2);
+
 	// ULONG n_block = DATA1_SIZE / BLOCK_PER_THREAD + 1;
-	const UINT n_task1 = (DATA1_SIZE / SET_SIZE) + (DATA1_SIZE % SET_SIZE); // 125,056개 작업
+	/*const UINT n_task1 = (DATA1_SIZE / SET_SIZE) + (DATA1_SIZE % SET_SIZE); // 125,056개 작업
 	const UINT n_thread = 512; // 한번 too many resources requested for launch 떠서 1블록당 스레드 갯수를 최대갯수에서 반으로 줄임
 	const UINT n_block = ceil((double)n_task1 / (double)n_thread);
 	//const ULONG n_task_per_thread = BLOCK_PER_THREAD / SET_SIZE;
@@ -152,7 +185,7 @@ cudaError_t cudaFilter(UINT8 *data)
 	//cout << "task cnt per thread: " << n_task_per_thread << endl;
 
 	//const ULONG n_block = DATA1_SIZE / BLOCK_PER_THREAD;
-	addKernel << <n_block, n_thread >> > (dev_data, dev_data1, dev_data2, dev_res1, dev_res2, n_task1, n_block, n_thread);
+	addKernel << <n_block, n_thread >> > (dev_data, dev_data1, dev_data2, dev_res1, dev_res2, n_task1, n_block, n_thread);*/
 
 	// kernel error
 	status = cudaGetLastError();
